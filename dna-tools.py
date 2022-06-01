@@ -8,10 +8,9 @@ def transcription(dna):
     translated = dna.maketrans("ATGC", "UACG")
     return dna.translate(translated)
 
-# TODO
 def codons(mrna):
     """Break up mRNA into codons"""
-    return ""
+    return [mrna[i:i+3] for i in range(0, len(mrna), 3)]
 
 # TODO: decorator that prints return statements when debug on...
 def amino_acids(codon):
