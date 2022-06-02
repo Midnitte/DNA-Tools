@@ -18,47 +18,48 @@ def amino_acids(codon):
     match codon:
         case "AUG":
             return "Methionine"
-        case ["AUA", "AUC", "AUU"]:
+        case "AUA" | "AUC" | "AUU":
             return "Isoleucine"
-        case ["ACG", "ACA", "ACC", "ACU"]:
+        case "ACG" | "ACA" | "ACC" | "ACU":
             return "Threonine"
-        case ["AGG", "AGA", "CGG", "CGA", "CGC", "CGU"]:
+        case "AGG" | "AGA" | "CGG" | "CGA" | "CGC" | "CGU":
             return "Arginine"
-        case ["AGC", "AGU", "UCG", "UCA", "UCC", "UCU"]:
+        case "AGC" | "AGU" | "UCG" | "UCA" | "UCC" | "UCU":
             return "Serine"
-        case ["AAG", "AAA"]:
+        case "AAG" | "AAA":
             return "Lysine"
-        case ["AAC", "AAU"]:
+        case "AAC" | "AAU":
             return "Asparagine"
-        case ["CUG", "CUA", "CUC", "CUU", "UUG", "UUA"]:
+        case "CUG" | "CUA" | "CUC" | "CUU" | "UUG" | "UUA":
             return "Leucine"
-        case ["CCG", "CCA", "CCC", "CCU"]:
+        case "CCG" | "CCA" | "CCC" | "CCU":
             return "Proline"
-        case ["CAG", "CAA"]:
+        case "CAG" | "CAA":
             return "Glutamine"
-        case ["CAC", "CAU"]:
+        case "CAC" | "CAU":
             return "Histidine"
-        case ["UUC", "UUU"]:
+        case "UUC" | "UUU":
             return "Phenylalanine"
-        case ["UGG"]:
+        case "UGG":
             return "Tryptophan"
-        case ["UGC", "UGU"]:
+        case "UGC" | "UGU":
             return "Cysteine"
-        case ["UAC", "UAU"]:
+        case "UAC" | "UAU":
             return "Tyrosine"
-        case ["GUG", "GUA", "GUC", "GUU"]:
+        case "GUG" | "GUA" | "GUC" | "GUU":
             return "Valine"
-        case ["GCG", "GCA", "GCC", "GCU"]:
+        case "GCG" | "GCA" | "GCC" | "GCU":
             return "Alanine"
-        case ["GGG", "GGA", "GGC", "GGU"]:
+        case "GGG" | "GGA" | "GGC" | "GGU":
             return "Glycine"
-        case ["GAG", "GAA"]:
+        case "GAG" | "GAA":
             return "Glutamic Acid"
-        case ["GAC", "GAU"]:
+        case "GAC" | "GAU":
             return "Aspartic Acid"
-        case ["UGA", "UAG", "UAA"]:
+        case "UGA" | "UAG" | "UAA":
             return "Stop" # Return stop, or "pass"?
 
-        # WIP
-        
+def translation(mrna):
+    """Return the Amino Acid for each codon in a mRNA sequence."""
+    return [amino_acids(i) for i in mrna]
 
