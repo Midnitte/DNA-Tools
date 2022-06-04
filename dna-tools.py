@@ -1,19 +1,19 @@
-def complement(dna):
+def complement(dna: str) -> str:
     """Converts DNA to the complementary strand."""
     translated = dna.maketrans("ATGC", "TACG")
     return dna.translate(translated)
 
-def transcription(dna):
+def transcription(dna: str) -> str:
     """Converts DNA to mRNA."""
     translated = dna.maketrans("ATGC", "UACG")
     return dna.translate(translated)
 
-def codons(mrna):
+def codons(mrna: str) -> list:
     """Break up mRNA into codons"""
     return [mrna[i:i+3] for i in range(0, len(mrna), 3)]
 
 # TODO: decorator that prints return statements when debug on...
-def amino_acids(codon):
+def amino_acids(codon: list) -> list:
     """Convert mRNA codons to amino acids."""
     match codon:
         case "AUG":
@@ -58,8 +58,14 @@ def amino_acids(codon):
             return "Aspartic Acid"
         case "UGA" | "UAG" | "UAA":
             return "Stop" # Return stop, or "pass"?
+        case _:
+            pass
 
 def translation(mrna):
     """Return the Amino Acid for each codon in a mRNA sequence."""
     return [amino_acids(i) for i in mrna]
 
+def dna_to_amino(dna: str) -> list:
+    """Directly translate a sequence to it's corresponding amino acids."""
+    dna = dna.upper()
+    return translation(codons(transcription(dna)))
